@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dear Little Me</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="paper-noise"></div>
+
+    <audio id="music" loop>
+        <source src="assets/music.mp3" type="audio/mpeg">
+    </audio>
+
+    <button class="music" onclick="toggleMusic()">♫</button>
+
+
+    <!-- =========================
+         01 COVER
+    ========================== -->
+
+    <section class="page active" id="page1">
+
+        <div class="album-cover">
+
+            <div class="cover-date">
+                17 · 09 · 2026
+            </div>
+
+            <div class="cover-photo">   
+                <img src="assets/cover.jpg">
+            </div>
+
+            <p class="tiny">
+                A LITTLE BOOK ABOUT ME
+            </p>
+
+            <h1>
+                Dear Little Me
+            </h1>
+
+            <p class="cover-text">
+                terima kasih sudah membawa<br>
+                kita sampai sejauh ini.
+            </p>
+
+            <button class="open-btn" onclick="nextPage()">
+                buka album
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         02 LITTLE ME
+    ========================== -->
+
+    <section class="page paper">
+
+        <div class="page-layout">
+
+            <div class="photo-stack">
+
+                <div class="tape"></div>
+
+                <img src="assets/kecil.jpg">
+
+                <span>
+                    little me · somewhere in the past
+                </span>
+
+            </div>
+
+            <div class="writing">
+
+                <p class="chapter">
+                    halaman 01
+                </p>
+
+                <h2>
+                    Untuk kamu,<br>
+                    yang masih kecil.
+                </h2>
+
+                <div class="line"></div>
+
+                <p>
+                    Dulu kamu belum tahu
+                    akan menjadi siapa.
+                </p>
+
+                <p>
+                    Kamu hanya tahu bagaimana
+                    caranya tertawa, bermain,
+                    dan pulang ketika hari mulai gelap.
+                </p>
+
+                <p>
+                    Kamu belum tahu bahwa suatu hari
+                    nanti beberapa orang akan datang,
+                    lalu pergi.
+                </p>
+
+                <p class="hand">
+                    Kalau boleh kembali sebentar,
+                    aku cuma ingin memelukmu.
+                </p>
+
+                <button onclick="nextPage()">
+                    halaman berikutnya →
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         03 MEMORY
+    ========================== -->
+
+    <section class="page paper-dark">
+
+        <div class="memory">
+
+            <p class="chapter">
+                halaman 02
+            </p>
+
+            <h2>
+                Aku masih ingat<br>
+                beberapa hal.
+            </h2>
+
+            <div class="memory-photo">
+
+                <img src="assets/memory1.jpg">
+
+                <span>
+                    one of those days
+                </span>
+
+            </div>
+
+            <p>
+                Tidak semua kenangan
+                bisa kuingat dengan jelas.
+            </p>
+
+            <p>
+                Tapi ada beberapa yang anehnya
+                masih tinggal sampai sekarang.
+            </p>
+
+            <p class="hand">
+                Mungkin karena waktu itu
+                aku benar-benar bahagia.
+            </p>
+
+            <button onclick="nextPage()">
+                lanjut →
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         04 TWO YEARS
+    ========================== -->
+
+    <section class="page paper">
+
+        <div class="two-years">
+
+            <div class="two-heading">
+
+                <p class="chapter">
+                    halaman 03
+                </p>
+
+                <h2>
+                    Ada dua tahun<br>
+                    yang berbeda tapi
+                    dengan sakit yang sama.
+                </h2>
+
+                <p>
+                    Bukan karena tanggalnya.
+                    Tapi karena orang-orang
+                    yang berbeda tapi sama"
+                    meninggalkan.
+                </p>
+
+            </div>
+
+
+            <div class="year">
+
+                <div class="year-photo">
+
+                    <img src="assets/tahun1.jpg">
+
+                    <div class="photo-label">
+                        2015
+                    </div>
+
+                </div>
+
+                <p>
+                    Tahun ketika seseorang
+                    yang kusayang memilih
+                    pergi.
+                </p>
+
+            </div>
+
+
+            <div class="year">
+
+                <div class="year-photo">
+
+                    <img src="assets/tahun2.jpg">
+
+                    <div class="photo-label">
+                        2026
+                    </div>
+
+                </div>
+
+                <p>
+                    Dan tahun berbeda,
+                    seseorang yang berbeda
+                    tapi sama" pergi
+                </p>
+
+            </div>
+
+
+            <div class="two-bottom">
+
+                <p class="hand">
+                    Aku tidak ingin membenci
+                    kedua tahun itu.
+                </p>
+
+                <p>
+                    Karena mereka pernah menjadi
+                    bagian dari hidupku.
+                </p>
+
+            </div>
+
+            <button onclick="nextPage()">
+                simpan halaman ini →
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         05 LETTER
+    ========================== -->
+
+    <section class="page paper-dark">
+
+        <div class="letter-paper">
+
+            <div class="letter-photo">
+
+                <img src="assets/surat.jpg">
+
+                <span>
+                    me · along the way
+                </span>
+
+            </div>
+
+            <div class="letter-content">
+
+                <p class="chapter">
+                    surat kecil
+                </p>
+
+                <h2>
+                    Dear me,
+                </h2>
+
+                <p>
+                    Aku tahu kamu capek.
+                </p>
+
+                <p>
+                    Ada banyak hal yang tidak
+                    berjalan seperti yang kamu mau.
+                </p>
+
+                <p>
+                    Ada orang yang pernah kamu kira
+                    akan tinggal selamanya.
+                </p>
+
+                <p>
+                    Ternyata tidak.
+                </p>
+
+                <p>
+                    Dan mungkin sampai sekarang
+                    masih ada bagian kecil dari dirimu
+                    yang berharap mereka kembali.
+                </p>
+
+                <p class="hand">
+                    Tidak apa-apa.
+                </p>
+
+                <p>
+                    Kita tidak harus melupakan
+                    semua yang pernah berarti.
+                </p>
+
+                <p>
+                    Kita hanya perlu belajar
+                    berjalan tanpa mereka.
+                </p>
+
+                <p class="hand big-hand">
+                    Terima kasih sudah bertahan.
+                </p>
+
+                <button onclick="nextPage()">
+                    lipat surat →
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         06 SCRAPBOOK
+    ========================== -->
+
+    <section class="page scrapbook-page">
+
+        <div class="scrapbook">
+
+            <div class="book-cover">
+
+                <p>
+                    MY LITTLE
+                </p>
+
+                <h2>
+                    MEMORY BOOK
+                </h2>
+
+                <div class="book-photo">
+                    <img src="assets/album1.jpg">
+                </div>
+
+                <small>
+                    memories · 2007 — 2026
+                </small>
+
+                <button onclick="openBook()">
+                    buka buku
+                </button>
+
+            </div>
+
+
+            <div class="real-book" id="realBook">
+
+                <div class="book-left">
+
+                    <span class="book-number">
+                        01
+                    </span>
+
+                    <h3>
+                        things<br>
+                        I don't want<br>
+                        to forget.
+                    </h3>
+
+                    <p>
+                        beberapa potongan kecil
+                        dari hidup yang pernah
+                        menjadi milikku.
+                    </p>
+
+                </div>
+
+
+                <div class="book-right">
+
+                    <div class="scrap-photo photo-a">
+
+                        <img src="assets/album1.jpg">
+
+                        <span>
+                            little days
+                        </span>
+
+                    </div>
+
+                    <div class="scrap-photo photo-b">
+
+                        <img src="assets/album2.jpg">
+
+                        <span>
+                            somewhere
+                        </span>
+
+                    </div>
+
+                    <div class="scrap-photo photo-c">
+
+                        <img src="assets/album3.jpg">
+
+                        <span>
+                            old memory
+                        </span>
+
+                    </div>
+
+                    <div class="scrap-photo photo-d">
+
+                        <img src="assets/album4.jpg">
+
+                        <span>
+                            me
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <button
+                class="continue-book"
+                onclick="nextPage()"
+            >
+                tutup buku →
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         07 NOW
+    ========================== -->
+
+    <section class="page paper">
+
+        <div class="now">
+
+            <div class="now-photo">
+
+                <img src="assets/sekarang.jpg">
+
+                <span>
+                    me · now
+                </span>
+
+            </div>
+
+            <div class="now-writing">
+
+                <p class="chapter">
+                    halaman terakhir
+                </p>
+
+                <h2>
+                    Dan sekarang,<br>
+                    aku di sini.
+                </h2>
+
+                <p>
+                    Aku belum menjadi semua
+                    yang dulu pernah kuimpikan.
+                </p>
+
+                <p>
+                    Masih banyak yang ingin
+                    kulakukan.
+                </p>
+
+                <p>
+                    Masih banyak tempat yang
+                    ingin kudatangi.
+                </p>
+
+                <p>
+                    Masih banyak hal yang
+                    ingin kuceritakan.
+                </p>
+
+                <p class="hand">
+                    Tapi setidaknya...
+                </p>
+
+                <p>
+                    aku masih di sini.
+                </p>
+
+                <button onclick="nextPage()">
+                    satu halaman lagi →
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         08 FINAL
+    ========================== -->
+
+    <section class="page final">
+
+        <img
+            class="final-image"
+            src="assets/final.jpg"
+        >
+
+        <div class="final-paper"></div>
+
+        <div class="final-content">
+
+            <p class="chapter">
+                17 · 09 · 2026
+            </p>
+
+            <h1>
+                Happy Birthday,<br>
+                to me.
+            </h1>
+
+            <p>
+                Untuk anak kecil yang dulu
+                tidak tahu seberapa jauh
+                hidup akan membawanya.
+            </p>
+
+            <p>
+                Terima kasih sudah bertahan.
+            </p>
+
+            <p class="hand">
+                Sisanya, biar aku yang lanjutkan.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>

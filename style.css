@@ -1,0 +1,2287 @@
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime&family=DM+Mono:wght@300;400&family=Playfair+Display:ital,wght@0,400;1,400&display=swap');
+
+:root {
+    --paper: #d7c6a8;
+    --paper-light: #e3d5ba;
+    --paper-dark: #b7a284;
+
+    --brown: #49382b;
+    --brown-light: #725d47;
+    --ink: #382c23;
+
+    --dark-paper: #28221c;
+    --dark-ink: #d2c1a3;
+
+    --shadow: rgba(40, 27, 18, .35);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    overflow: hidden;
+    color: var(--ink);
+    background: #292019;
+    font-family: "Courier Prime", monospace;
+}
+
+
+/* =================================
+   PAPER NOISE
+================================= */
+
+.paper-noise {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    pointer-events: none;
+    opacity: .16;
+
+    background-image:
+        url("https://grainy-gradients.vercel.app/noise.svg");
+
+    mix-blend-mode: multiply;
+}
+
+
+/* =================================
+   MUSIC
+================================= */
+
+.music {
+    position: fixed;
+    z-index: 1100;
+
+    top: 20px;
+    right: 25px;
+
+    width: 38px;
+    height: 38px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(80, 60, 40, .4);
+
+    background: rgba(215, 198, 168, .7);
+
+    color: var(--brown);
+
+    cursor: pointer;
+}
+
+
+/* =================================
+   PAGES
+================================= */
+
+.page {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 50px;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform:
+        scale(.97)
+        rotateX(4deg)
+        translateY(20px);
+
+    transform-origin: center;
+
+    transition:
+        opacity .8s ease,
+        transform 1s cubic-bezier(.2,.8,.2,1),
+        visibility .8s;
+
+    overflow: hidden;
+}
+
+.page.active {
+    opacity: 1;
+    visibility: visible;
+
+    transform:
+        scale(1)
+        rotateX(0)
+        translateY(0);
+}
+
+
+/* =================================
+   PAPER BACKGROUNDS
+================================= */
+
+.paper {
+    background:
+        radial-gradient(
+            circle at 30% 20%,
+            rgba(255,255,255,.22),
+            transparent 30%
+        ),
+        var(--paper);
+}
+
+.paper-dark {
+    background:
+        radial-gradient(
+            circle at 70% 30%,
+            rgba(160,130,90,.15),
+            transparent 30%
+        ),
+        var(--dark-paper);
+
+    color: var(--dark-ink);
+}
+
+
+/* =================================
+   TYPOGRAPHY
+================================= */
+
+h1,
+h2,
+h3 {
+    font-family: "Playfair Display", serif;
+    font-weight: 400;
+}
+
+h1 {
+    font-size: clamp(48px, 7vw, 80px);
+    line-height: .95;
+}
+
+h2 {
+    font-size: clamp(34px, 4vw, 52px);
+    line-height: 1.05;
+}
+
+p {
+    font-size: 12px;
+    line-height: 1.9;
+}
+
+.chapter,
+.tiny {
+    font-family: "DM Mono", monospace;
+    font-size: 8px;
+
+    letter-spacing: 3px;
+    text-transform: uppercase;
+
+    color: var(--brown-light);
+}
+
+.paper-dark .chapter {
+    color: #9a8668;
+}
+
+.hand {
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    color: #5e4937;
+}
+
+.paper-dark .hand {
+    color: #c2a987;
+}
+
+
+/* =================================
+   COVER
+================================= */
+
+.album-cover {
+    width: min(470px, 90vw);
+    min-height: 650px;
+
+    padding: 45px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #a98e6b,
+            #c4ac88
+        );
+
+    border:
+        1px solid rgba(60,40,25,.5);
+
+    box-shadow:
+        0 35px 70px rgba(0,0,0,.4),
+        inset 0 0 50px rgba(70,40,20,.15);
+
+    transform: rotate(-1deg);
+}
+
+.cover-date {
+    width: 100%;
+
+    text-align: right;
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 35px;
+}
+
+.cover-photo {
+    width: 240px;
+    height: 285px;
+
+    padding: 10px;
+
+    background: #e5d8c0;
+
+    box-shadow:
+        0 15px 30px var(--shadow);
+
+    transform: rotate(2deg);
+
+    margin-bottom: 35px;
+}
+
+.cover-photo img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    filter:
+        sepia(.35)
+        saturate(.75)
+        contrast(.9);
+}
+
+.album-cover h1 {
+    color: #34271e;
+
+    margin: 12px 0 20px;
+}
+
+.cover-text {
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+
+    color: #5b4633;
+
+    margin-bottom: 35px;
+}
+
+.open-btn,
+.album-cover button {
+    padding: 11px 20px;
+
+    border:
+        1px solid #735c45;
+
+    background: transparent;
+
+    color: #49382b;
+
+    font-family: "Courier Prime", monospace;
+
+    font-size: 10px;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+.open-btn:hover {
+    background: #49382b;
+    color: var(--paper);
+}
+
+
+/* =================================
+   NORMAL PAGE
+================================= */
+
+.page-layout {
+    width: min(1000px, 100%);
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 90px;
+
+    align-items: center;
+}
+
+.photo-stack {
+    position: relative;
+
+    width: 380px;
+
+    padding: 12px;
+
+    background: #e4d7bc;
+
+    box-shadow:
+        0 25px 50px var(--shadow);
+
+    transform: rotate(-3deg);
+}
+
+.photo-stack img {
+    display: block;
+
+    width: 100%;
+    height: 480px;
+
+    object-fit: cover;
+
+    filter:
+        sepia(.35)
+        saturate(.65);
+}
+
+.photo-stack span,
+.memory-photo span,
+.now-photo span,
+.letter-photo span {
+    display: block;
+
+    padding-top: 12px;
+
+    font-size: 8px;
+
+    color: #665341;
+}
+
+.tape {
+    position: absolute;
+
+    width: 100px;
+    height: 25px;
+
+    top: -13px;
+    left: 140px;
+
+    background: rgba(190,170,135,.7);
+
+    transform: rotate(-2deg);
+
+    z-index: 2;
+}
+
+.writing {
+    max-width: 470px;
+}
+
+.writing h2 {
+    margin: 15px 0 25px;
+}
+
+.line {
+    width: 50px;
+    height: 1px;
+
+    background: #80684d;
+
+    margin: 25px 0;
+}
+
+.writing p {
+    margin-bottom: 18px;
+}
+
+button {
+    font-family: "Courier Prime", monospace;
+}
+
+.writing button,
+.memory button,
+.two-years button,
+.letter-content button,
+.now-writing button {
+    border: 0;
+
+    background: transparent;
+
+    color: #765d44;
+
+    font-size: 9px;
+
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    margin-top: 15px;
+}
+
+
+/* =================================
+   MEMORY
+================================= */
+
+.memory {
+    width: min(620px, 90vw);
+
+    text-align: center;
+}
+
+.memory h2 {
+    margin: 15px 0 30px;
+}
+
+.memory-photo {
+    width: 300px;
+
+    margin: 0 auto 30px;
+
+    padding: 10px;
+
+    background: #dfd0b3;
+
+    box-shadow:
+        0 20px 40px rgba(0,0,0,.35);
+
+    transform: rotate(2deg);
+}
+
+.memory-photo img {
+    width: 100%;
+    height: 250px;
+
+    object-fit: cover;
+
+    filter:
+        sepia(.45)
+        grayscale(.2);
+}
+
+.memory p {
+    max-width: 480px;
+
+    margin: 12px auto;
+
+    color: #a9987c;
+}
+
+
+/* =================================
+   TWO YEARS
+================================= */
+
+.two-years {
+    width: min(1100px, 100%);
+
+    display: grid;
+
+    grid-template-columns:
+        1.2fr 1fr 1fr;
+
+    gap: 35px;
+
+    align-items: start;
+}
+
+.two-heading h2 {
+    margin: 15px 0 25px;
+}
+
+.two-heading > p:last-child {
+    max-width: 300px;
+}
+
+.year-photo {
+    position: relative;
+
+    padding: 9px;
+
+    background: #e2d4b8;
+
+    box-shadow:
+        0 15px 30px var(--shadow);
+
+    transform: rotate(-2deg);
+}
+
+.year:nth-child(3) .year-photo {
+    transform: rotate(3deg);
+}
+
+.year-photo img {
+    display: block;
+
+    width: 100%;
+    height: 300px;
+
+    object-fit: cover;
+
+    filter:
+        sepia(.45)
+        saturate(.65)
+        contrast(.9);
+}
+
+.photo-label {
+    position: absolute;
+
+    bottom: 18px;
+    left: 18px;
+
+    padding: 5px 9px;
+
+    background: rgba(226,212,184,.9);
+
+    font-size: 9px;
+}
+
+.year > p {
+    margin-top: 20px;
+
+    color: #675340;
+
+    font-size: 11px;
+}
+
+.two-bottom {
+    grid-column: 1 / -1;
+
+    display: flex;
+
+    gap: 50px;
+
+    margin-top: 20px;
+
+    border-top: 1px solid rgba(80,60,40,.25);
+
+    padding-top: 20px;
+}
+
+.two-bottom p {
+    font-size: 11px;
+}
+
+
+/* =================================
+   LETTER
+================================= */
+
+.letter-paper {
+    width: min(1000px, 100%);
+
+    display: grid;
+
+    grid-template-columns:
+        330px 1fr;
+
+    gap: 80px;
+
+    align-items: center;
+}
+
+.letter-photo img {
+    width: 100%;
+    height: 480px;
+
+    object-fit: cover;
+
+    filter:
+        sepia(.4)
+        grayscale(.25)
+        brightness(.8);
+}
+
+.letter-content {
+    max-width: 520px;
+}
+
+.letter-content h2 {
+    margin: 10px 0 25px;
+}
+
+.letter-content p {
+    margin-bottom: 12px;
+
+    color: #b5a487;
+}
+
+.big-hand {
+    margin-top: 25px;
+
+    font-size: 18px;
+
+    color: #d3b992 !important;
+}
+
+
+/* =================================
+   SCRAPBOOK
+================================= */
+
+.scrapbook-page {
+    background: #30261e;
+}
+
+.scrapbook {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.book-cover {
+    width: 420px;
+    height: 550px;
+
+    padding: 45px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #70563e,
+            #4b3829
+        );
+
+    color: #d7c4a5;
+
+    text-align: center;
+
+    box-shadow:
+        0 30px 70px rgba(0,0,0,.6);
+
+    border:
+        1px solid #8a6d4e;
+
+    transform:
+        rotate(-2deg);
+
+    transition:
+        transform 1s,
+        opacity .8s;
+}
+
+.book-cover p {
+    font-size: 9px;
+
+    letter-spacing: 4px;
+
+    color: #bba587;
+}
+
+.book-cover h2 {
+    margin: 20px 0 30px;
+
+    font-size: 40px;
+}
+
+.book-photo {
+    width: 220px;
+    height: 270px;
+
+    margin: auto;
+
+    padding: 8px;
+
+    background: #ddd0b6;
+}
+
+.book-photo img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    filter: sepia(.5);
+}
+
+.book-cover small {
+    display: block;
+
+    margin: 20px;
+
+    font-size: 8px;
+}
+
+.book-cover button {
+    border:
+        1px solid #a98c6c;
+
+    background: transparent;
+
+    color: #d7c4a5;
+
+    padding: 10px 18px;
+
+    cursor: pointer;
+}
+
+.real-book {
+    position: absolute;
+
+    width: min(950px, 90vw);
+    height: 560px;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    opacity: 0;
+
+    transform:
+        scale(.8)
+        rotateY(-20deg);
+
+    pointer-events: none;
+
+    transition:
+        opacity .8s,
+        transform 1s;
+}
+
+.real-book.open {
+    opacity: 1;
+
+    transform:
+        scale(1)
+        rotateY(0);
+
+    pointer-events: auto;
+}
+
+.book-cover.closed {
+    opacity: 0;
+
+    transform:
+        translateX(-250px)
+        rotateY(70deg);
+
+    pointer-events: none;
+}
+
+.book-left,
+.book-right {
+    position: relative;
+
+    height: 100%;
+
+    box-shadow:
+        inset 0 0 50px rgba(70,40,20,.15);
+}
+
+.book-left {
+    background: #d5c3a5;
+
+    padding: 65px;
+}
+
+.book-right {
+    background: #c5b294;
+}
+
+.book-number {
+    font-size: 9px;
+
+    color: #76604a;
+}
+
+.book-left h3 {
+    font-size: 38px;
+
+    line-height: 1;
+
+    margin-top: 50px;
+}
+
+.book-left p {
+    margin-top: 80px;
+
+    max-width: 220px;
+
+    font-style: italic;
+
+    color: #6b5742;
+}
+
+.scrap-photo {
+    position: absolute;
+
+    width: 175px;
+
+    padding: 8px 8px 23px;
+
+    background: #e3d6bd;
+
+    box-shadow:
+        0 15px 25px rgba(50,30,15,.35);
+
+    transition:
+        transform .5s;
+
+    cursor: pointer;
+}
+
+.scrap-photo img {
+    width: 100%;
+    height: 175px;
+
+    object-fit: cover;
+
+    filter:
+        sepia(.4)
+        saturate(.7);
+}
+
+.scrap-photo span {
+    display: block;
+
+    margin-top: 7px;
+
+    font-size: 8px;
+
+    color: #665342;
+}
+
+.photo-a {
+    top: 30px;
+    left: 35px;
+
+    transform: rotate(-7deg);
+}
+
+.photo-b {
+    top: 50px;
+    right: 35px;
+
+    transform: rotate(5deg);
+}
+
+.photo-c {
+    bottom: 30px;
+    left: 55px;
+
+    transform: rotate(5deg);
+}
+
+.photo-d {
+    bottom: 35px;
+    right: 45px;
+
+    transform: rotate(-6deg);
+}
+
+.scrap-photo:hover {
+    z-index: 10;
+
+    transform:
+        rotate(0)
+        scale(1.08);
+}
+
+.continue-book {
+    position: absolute;
+
+    bottom: 35px;
+
+    border: 0;
+
+    background: transparent;
+
+    color: #b49a77;
+
+    cursor: pointer;
+
+    font-size: 9px;
+}
+
+
+/* =================================
+   NOW
+================================= */
+
+.now {
+    width: min(1000px, 100%);
+
+    display: grid;
+
+    grid-template-columns:
+        420px 1fr;
+
+    gap: 90px;
+
+    align-items: center;
+}
+
+.now-photo {
+    position: relative;
+
+    padding: 10px;
+
+    background: #e3d4b7;
+
+    transform: rotate(2deg);
+
+    box-shadow:
+        0 25px 50px var(--shadow);
+}
+
+.now-photo img {
+    display: block;
+
+    width: 100%;
+    height: 500px;
+
+    object-fit: cover;
+
+    filter:
+        sepia(.25)
+        saturate(.7);
+}
+
+.now-photo span {
+    padding-left: 5px;
+}
+
+.now-writing {
+    max-width: 480px;
+}
+
+.now-writing h2 {
+    margin: 15px 0 30px;
+}
+
+.now-writing p {
+    margin-bottom: 15px;
+}
+
+
+/* =================================
+   FINAL
+================================= */
+
+.final {
+    padding: 0;
+
+    background: #1d1712;
+}
+
+.final-image {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    filter:
+        sepia(.7)
+        brightness(.4)
+        contrast(.9);
+
+    animation:
+        finalZoom 14s ease forwards;
+}
+
+@keyframes finalZoom {
+    from {
+        transform: scale(1.08);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+.final-paper {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(30,20,12,.1),
+            rgba(30,20,12,.75)
+        );
+}
+
+.final-content {
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 600px;
+
+    text-align: center;
+
+    color: #e1d0b3;
+}
+
+.final-content .chapter {
+    color: #c0a57d;
+}
+
+.final-content h1 {
+    margin: 20px 0 35px;
+}
+
+.final-content p {
+    color: #c8b99f;
+
+    margin: 10px auto;
+
+    max-width: 450px;
+}
+
+.final-content .hand {
+    margin-top: 35px;
+
+    font-size: 17px;
+
+    color: #e0c7a1;
+}
+
+
+/* =================================
+   MOBILE
+================================= */
+
+/* =========================================
+   RESPONSIVE SYSTEM
+   HP → TABLET → DESKTOP
+========================================= */
+
+
+/* =========================
+   TABLET PORTRAIT
+   601px - 1024px
+========================= */
+
+@media (min-width: 601px) and (max-width: 1024px) {
+
+    .page {
+        padding: 40px;
+    }
+
+
+    /* NORMAL PAGE */
+
+    .page-layout {
+        width: 90vw;
+
+        grid-template-columns:
+            42% 1fr;
+
+        gap: 50px;
+    }
+
+
+    .photo-stack {
+        width: 100%;
+        max-width: 330px;
+    }
+
+
+    .photo-stack img {
+        height: 420px;
+    }
+
+
+    /* MEMORY */
+
+    .memory {
+        width: 75vw;
+    }
+
+
+    .memory-photo {
+        width: 280px;
+    }
+
+
+    /* TWO YEARS */
+
+    .two-years {
+        width: 90vw;
+
+        grid-template-columns:
+            1fr 1fr;
+
+        gap: 30px;
+    }
+
+
+    .two-heading {
+        grid-column: 1 / -1;
+    }
+
+
+    .year-photo img {
+        height: 300px;
+    }
+
+
+    /* LETTER */
+
+    .letter-paper {
+        width: 90vw;
+
+        grid-template-columns:
+            35% 1fr;
+
+        gap: 50px;
+    }
+
+
+    .letter-photo img {
+        height: 420px;
+    }
+
+
+    /* SCRAPBOOK */
+
+    .book-cover {
+        width: 370px;
+        height: 510px;
+    }
+
+
+    .real-book {
+        width: 88vw;
+        height: 500px;
+    }
+
+
+    .scrap-photo {
+        width: 145px;
+    }
+
+
+    .scrap-photo img {
+        height: 145px;
+    }
+
+
+    /* NOW */
+
+    .now {
+        width: 90vw;
+
+        grid-template-columns:
+            40% 1fr;
+
+        gap: 55px;
+    }
+
+
+    .now-photo img {
+        height: 450px;
+    }
+
+}
+
+
+/* =========================
+   LARGE PHONE
+   481px - 600px
+========================= */
+
+@media (min-width: 481px) and (max-width: 600px) {
+
+    .page {
+        padding: 30px 25px;
+    }
+
+
+    h1 {
+        font-size: 54px;
+    }
+
+
+    h2 {
+        font-size: 38px;
+    }
+
+
+    p {
+        font-size: 12px;
+    }
+
+
+    /* COVER */
+
+    .album-cover {
+        width: 380px;
+        min-height: 600px;
+
+        padding: 35px;
+    }
+
+
+    .cover-photo {
+        width: 210px;
+        height: 250px;
+    }
+
+
+    /* NORMAL */
+
+    .page-layout,
+    .letter-paper,
+    .now {
+
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+
+        width: 90vw;
+    }
+
+
+    .photo-stack {
+
+        width: 270px;
+
+        margin: auto;
+    }
+
+
+    .photo-stack img {
+        height: 310px;
+    }
+
+
+    .writing,
+    .letter-content,
+    .now-writing {
+
+        text-align: center;
+
+        margin: auto;
+
+        max-width: 450px;
+    }
+
+
+    /* TWO YEARS */
+
+    .two-years {
+
+        width: 90vw;
+
+        grid-template-columns:
+            1fr 1fr;
+
+        gap: 15px;
+    }
+
+
+    .two-heading {
+        grid-column: 1 / -1;
+    }
+
+
+    .year-photo img {
+        height: 220px;
+    }
+
+
+    /* LETTER */
+
+    .letter-photo {
+
+        width: 230px;
+
+        margin: auto;
+    }
+
+
+    .letter-photo img {
+        height: 290px;
+    }
+
+
+    /* SCRAPBOOK */
+
+    .book-cover {
+        width: 330px;
+        height: 480px;
+
+        padding: 30px;
+    }
+
+
+    .book-photo {
+        width: 175px;
+        height: 215px;
+    }
+
+
+    .real-book {
+        width: 94vw;
+        height: 420px;
+    }
+
+
+    .book-left {
+        padding: 30px;
+    }
+
+
+    .book-left h3 {
+        font-size: 27px;
+    }
+
+
+    .scrap-photo {
+        width: 105px;
+
+        padding: 6px 6px 17px;
+    }
+
+
+    .scrap-photo img {
+        height: 105px;
+    }
+
+
+    /* NOW */
+
+    .now-photo {
+        width: 250px;
+
+        margin: auto;
+    }
+
+
+    .now-photo img {
+        height: 310px;
+    }
+
+}
+
+
+/* =========================
+   NORMAL PHONE
+   361px - 480px
+========================= */
+
+@media (min-width: 361px) and (max-width: 480px) {
+
+    .page {
+
+        padding:
+            25px 18px;
+
+        overflow-y: auto;
+    }
+
+
+    h1 {
+
+        font-size:
+            clamp(40px, 12vw, 52px);
+
+    }
+
+
+    h2 {
+
+        font-size:
+            clamp(30px, 9vw, 38px);
+
+    }
+
+
+    p {
+
+        font-size: 11px;
+
+        line-height: 1.8;
+
+    }
+
+
+    .chapter,
+    .tiny {
+
+        font-size: 7px;
+
+        letter-spacing: 2px;
+
+    }
+
+
+    /* COVER */
+
+    .album-cover {
+
+        width: 90vw;
+
+        min-height: 570px;
+
+        padding: 28px;
+
+    }
+
+
+    .cover-photo {
+
+        width: 190px;
+
+        height: 230px;
+
+    }
+
+
+    .cover-text {
+
+        font-size: 12px;
+
+    }
+
+
+    /* NORMAL */
+
+    .page-layout {
+
+        width: 90vw;
+
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 25px;
+
+        justify-content: center;
+
+    }
+
+
+    .photo-stack {
+
+        width: 220px;
+
+        margin: auto;
+
+    }
+
+
+    .photo-stack img {
+
+        height: 250px;
+
+    }
+
+
+    .writing {
+
+        text-align: center;
+
+        width: 100%;
+
+    }
+
+
+    .writing h2 {
+
+        margin-bottom: 18px;
+
+    }
+
+
+    .writing p {
+
+        margin-bottom: 10px;
+
+    }
+
+
+    /* MEMORY */
+
+    .memory {
+
+        width: 90vw;
+
+    }
+
+
+    .memory-photo {
+
+        width: 220px;
+
+    }
+
+
+    .memory-photo img {
+
+        height: 190px;
+
+    }
+
+
+    /* TWO YEARS */
+
+    .two-years {
+
+        width: 92vw;
+
+        grid-template-columns:
+            1fr 1fr;
+
+        gap: 12px;
+
+    }
+
+
+    .two-heading {
+
+        grid-column: 1 / -1;
+
+    }
+
+
+    .two-heading h2 {
+
+        margin-bottom: 12px;
+
+    }
+
+
+    .year-photo {
+
+        padding: 6px;
+
+    }
+
+
+    .year-photo img {
+
+        height: 175px;
+
+    }
+
+
+    .year > p {
+
+        font-size: 9px;
+
+        line-height: 1.6;
+
+    }
+
+
+    .two-bottom {
+
+        grid-column: 1 / -1;
+
+        flex-direction: column;
+
+        gap: 3px;
+
+        margin-top: 5px;
+
+    }
+
+
+    /* LETTER */
+
+    .letter-paper {
+
+        width: 90vw;
+
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 20px;
+
+        justify-content: center;
+
+    }
+
+
+    .letter-photo {
+
+        width: 190px;
+
+    }
+
+
+    .letter-photo img {
+
+        height: 220px;
+
+    }
+
+
+    .letter-content {
+
+        text-align: center;
+
+    }
+
+
+    .letter-content h2 {
+
+        margin-bottom: 15px;
+
+    }
+
+
+    .letter-content p {
+
+        margin-bottom: 8px;
+
+    }
+
+
+    .big-hand {
+
+        font-size: 15px !important;
+
+    }
+
+
+    /* SCRAPBOOK */
+
+    .book-cover {
+
+        width: 270px;
+
+        height: 410px;
+
+        padding: 25px;
+
+    }
+
+
+    .book-cover h2 {
+
+        font-size: 30px;
+
+        margin: 12px 0 20px;
+
+    }
+
+
+    .book-photo {
+
+        width: 140px;
+
+        height: 170px;
+
+    }
+
+
+    .real-book {
+
+        width: 94vw;
+
+        height: 350px;
+
+    }
+
+
+    .book-left {
+
+        padding: 22px;
+
+    }
+
+
+    .book-left h3 {
+
+        font-size: 20px;
+
+        margin-top: 30px;
+
+    }
+
+
+    .book-left p {
+
+        font-size: 8px;
+
+        margin-top: 35px;
+
+    }
+
+
+    .scrap-photo {
+
+        width: 82px;
+
+        padding: 5px 5px 12px;
+
+    }
+
+
+    .scrap-photo img {
+
+        height: 82px;
+
+    }
+
+
+    .scrap-photo span {
+
+        font-size: 6px;
+
+    }
+
+
+    .photo-a {
+
+        top: 20px;
+
+        left: 15px;
+
+    }
+
+
+    .photo-b {
+
+        top: 30px;
+
+        right: 15px;
+
+    }
+
+
+    .photo-c {
+
+        bottom: 20px;
+
+        left: 20px;
+
+    }
+
+
+    .photo-d {
+
+        bottom: 25px;
+
+        right: 20px;
+
+    }
+
+
+    /* NOW */
+
+    .now {
+
+        width: 90vw;
+
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 25px;
+
+    }
+
+
+    .now-photo {
+
+        width: 210px;
+
+        margin: auto;
+
+    }
+
+
+    .now-photo img {
+
+        height: 250px;
+
+    }
+
+
+    .now-writing {
+
+        text-align: center;
+
+    }
+
+
+    /* FINAL */
+
+    .final-content {
+
+        width: 90vw;
+
+    }
+
+
+    .final-content h1 {
+
+        font-size:
+            clamp(40px, 12vw, 55px);
+
+    }
+
+
+    .final-content p {
+
+        font-size: 11px;
+
+    }
+
+
+    .final-content .hand {
+
+        font-size: 14px;
+
+    }
+
+}
+
+
+/* =========================
+   SMALL PHONE
+   <= 360px
+========================= */
+
+@media (max-width: 360px) {
+
+    .page {
+
+        padding: 20px 14px;
+
+        overflow-y: auto;
+
+    }
+
+
+    h1 {
+
+        font-size: 38px;
+
+    }
+
+
+    h2 {
+
+        font-size: 28px;
+
+    }
+
+
+    p {
+
+        font-size: 10px;
+
+        line-height: 1.7;
+
+    }
+
+
+    /* COVER */
+
+    .album-cover {
+
+        width: 92vw;
+
+        min-height: 500px;
+
+        padding: 22px;
+
+    }
+
+
+    .cover-photo {
+
+        width: 155px;
+
+        height: 190px;
+
+    }
+
+
+    .cover-text {
+
+        font-size: 10px;
+
+    }
+
+
+    /* CHILDHOOD */
+
+    .photo-stack {
+
+        width: 185px;
+
+    }
+
+
+    .photo-stack img {
+
+        height: 215px;
+
+    }
+
+
+    /* MEMORY */
+
+    .memory-photo {
+
+        width: 185px;
+
+    }
+
+
+    .memory-photo img {
+
+        height: 160px;
+
+    }
+
+
+    /* TWO YEARS */
+
+    .two-years {
+
+        width: 94vw;
+
+        gap: 8px;
+
+    }
+
+
+    .year-photo img {
+
+        height: 135px;
+
+    }
+
+
+    .year > p {
+
+        font-size: 8px;
+
+    }
+
+
+    /* LETTER */
+
+    .letter-photo {
+
+        width: 155px;
+
+    }
+
+
+    .letter-photo img {
+
+        height: 180px;
+
+    }
+
+
+    /* BOOK */
+
+    .book-cover {
+
+        width: 235px;
+
+        height: 350px;
+
+        padding: 20px;
+
+    }
+
+
+    .book-photo {
+
+        width: 115px;
+
+        height: 140px;
+
+    }
+
+
+    .real-book {
+
+        width: 96vw;
+
+        height: 300px;
+
+    }
+
+
+    .book-left {
+
+        padding: 18px;
+
+    }
+
+
+    .book-left h3 {
+
+        font-size: 17px;
+
+    }
+
+
+    .scrap-photo {
+
+        width: 68px;
+
+    }
+
+
+    .scrap-photo img {
+
+        height: 68px;
+
+    }
+
+
+    /* NOW */
+
+    .now-photo {
+
+        width: 170px;
+
+    }
+
+
+    .now-photo img {
+
+        height: 210px;
+
+    }
+
+
+    /* FINAL */
+
+    .final-content h1 {
+
+        font-size: 38px;
+
+    }
+
+}
+
+
+/* =========================
+   LANDSCAPE PHONE
+========================= */
+
+@media (max-height: 600px) and (orientation: landscape) {
+
+    .page {
+
+        padding: 20px 40px;
+
+    }
+
+
+    .album-cover {
+
+        min-height: 0;
+
+        height: 90vh;
+
+        width: 330px;
+
+        padding: 20px;
+
+    }
+
+
+    .cover-photo {
+
+        width: 130px;
+
+        height: 150px;
+
+        margin-bottom: 15px;
+
+    }
+
+
+    .cover-text {
+
+        margin: 10px 0;
+
+    }
+
+
+    .page-layout,
+    .letter-paper,
+    .now {
+
+        grid-template-columns:
+            35% 1fr;
+
+        gap: 40px;
+
+    }
+
+
+    .photo-stack img {
+
+        height: 250px;
+
+    }
+
+
+    .letter-photo img {
+
+        height: 300px;
+
+    }
+
+
+    .now-photo img {
+
+        height: 300px;
+
+    }
+
+
+    .real-book {
+
+        height: 85vh;
+
+    }
+
+}
+
+
+/* =========================
+   TABLET LANDSCAPE
+========================= */
+
+@media (min-width: 801px)
+       and (max-width: 1200px)
+       and (orientation: landscape) {
+
+    .page {
+
+        padding: 40px;
+
+    }
+
+
+    .page-layout {
+
+        width: 90vw;
+
+        gap: 60px;
+
+    }
+
+
+    .photo-stack {
+
+        width: 320px;
+
+    }
+
+
+    .photo-stack img {
+
+        height: 420px;
+
+    }
+
+
+    .two-years {
+
+        width: 90vw;
+
+    }
+
+
+    .letter-paper {
+
+        width: 90vw;
+
+    }
+
+
+    .real-book {
+
+        width: 85vw;
+
+        height: 500px;
+
+    }
+
+}
+
+
+/* =========================
+   PREVENT HORIZONTAL SCROLL
+========================= */
+
+.page,
+.scrapbook,
+.real-book,
+.two-years,
+.page-layout,
+.letter-paper,
+.now {
+
+    max-width: 100vw;
+
+}
+
+
+/* =========================
+   TOUCH DEVICES
+========================= */
+
+@media (hover: none) and (pointer: coarse) {
+
+    .scrap-photo:hover {
+
+        transform: none;
+
+    }
+
+
+    .year-card:hover img {
+
+        transform: none;
+
+    }
+
+
+    button {
+
+        min-height: 40px;
+
+    }
+
+}
